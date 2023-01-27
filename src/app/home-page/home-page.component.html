@@ -1,0 +1,30 @@
+<app-header></app-header>
+<div class="Angularflix-content-wrapper">
+	<h3 class="home-programs">Nos Films</h3>
+	<app-carrousel></app-carrousel>
+	<div
+		class="program-block"
+		*ngIf="isLoading">
+		<h3 class="home-programs">...</h3>
+		<app-carrousel></app-carrousel>
+		<h3 class="home-programs">...</h3>
+		<app-carrousel></app-carrousel>
+		<h3 class="home-programs">...</h3>
+		<app-carrousel></app-carrousel>
+		<h3 class="home-programs">...</h3>
+		<app-carrousel></app-carrousel>
+		<h3 class="home-programs">...</h3>
+		<app-carrousel></app-carrousel>
+	</div>
+	<!-- <div *ngIf="!isLoading">
+		<div
+			class="program-block"
+			*ngFor="let videoItem of videos">
+			<h3 class="home-programs">{{ videoItem.name }}</h3>
+			<program-list
+				[data]="videoItem.items"
+				[playlistId]="videoItem.id"
+				*ngIf="!isLoading"></program-list>
+		</div>
+	</div> -->
+</div>
