@@ -1,30 +1,51 @@
 <app-header></app-header>
-<div class="Angularflix-content-wrapper">
-	<h3 class="home-programs">Nos Films</h3>
-	<app-carrousel></app-carrousel>
+<div class="carousels">
 	<div
-		class="program-block"
-		*ngIf="isLoading">
-		<h3 class="home-programs">...</h3>
-		<app-carrousel></app-carrousel>
-		<h3 class="home-programs">...</h3>
-		<app-carrousel></app-carrousel>
-		<h3 class="home-programs">...</h3>
-		<app-carrousel></app-carrousel>
-		<h3 class="home-programs">...</h3>
-		<app-carrousel></app-carrousel>
-		<h3 class="home-programs">...</h3>
-		<app-carrousel></app-carrousel>
+		*ngIf="isLoading"
+		class="carrousel">
+		<br />
+		<br />
+		<app-carrousel
+			#bestMovies
+			[title]="'Best Movies'"
+			[images]="imagesBest"></app-carrousel>
+		<br />
+		<br />
 	</div>
-	<!-- <div *ngIf="!isLoading">
-		<div
-			class="program-block"
-			*ngFor="let videoItem of videos">
-			<h3 class="home-programs">{{ videoItem.name }}</h3>
-			<program-list
-				[data]="videoItem.items"
-				[playlistId]="videoItem.id"
-				*ngIf="!isLoading"></program-list>
-		</div>
-	</div> -->
+	<div
+		*ngIf="isLoading"
+		class="carrousel">
+		<br />
+		<br />
+		<app-carrousel
+			#Cat1
+			[title]="titleCat1"
+			[images]="imagesBestByCategory1"></app-carrousel>
+		<br />
+		<br />
+	</div>
+	<div
+		*ngIf="isLoading"
+		class="carrousel">
+		<br />
+		<br />
+		<app-carrousel
+			#Cat2
+			[title]="titleCat2"
+			[images]="imagesBestByCategory2"></app-carrousel>
+		<br />
+		<br />
+	</div>
+	<div
+		*ngIf="isLoading"
+		class="carrousel">
+		<br />
+		<br />
+		<app-carrousel
+			#Cat3
+			[title]="titleCat3"
+			[images]="imagesBestByCategory3"></app-carrousel>
+		<br />
+		<br />
+	</div>
 </div>

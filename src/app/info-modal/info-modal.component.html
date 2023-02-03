@@ -1,0 +1,75 @@
+<mat-dialog-content
+	class="modal"
+	id="modal">
+	<div class="modal-content">
+		<mat-icon
+			mat-dialog-close
+			aria-label="close modal"
+			class="close"
+			>close</mat-icon
+		>
+
+		<div class="modal-cover-image">
+			<img
+				alt="movie cover"
+				id="modal-cover"
+				src="{{ movie.image_url }}" />
+		</div>
+		<div class="modal-movie-info">
+			<header class="modal_header">
+				<h3
+					class="title"
+					id="modal-title">
+					{{ movie.title }}
+				</h3>
+			</header>
+			<div class="metadata">
+				<p id="modal-year">{{ movie.year }}</p>
+				•
+				<p id="modal-rating">{{ movie.imdb_score }} <mat-icon>star</mat-icon></p>
+				•
+				<p id="modal-duration">{{ movie.duration }}mn</p>
+				<br />
+				<p
+					class="genres"
+					id="modal-genres">
+					{{ movie.genres }}
+				</p>
+				<br />
+				<strong>IMDb: </strong>
+				<p id="modal-imdb">{{ movie.Imdb_url }}</p>
+				<br /><br />
+			</div>
+			<div>
+				<strong>Directed by: </strong>
+				<p id="modal-directors">{{ movie.directors }}</p>
+				<br />
+				<strong>Starring: </strong>
+				<p id="modal-cast">{{ movie.actors }}</p>
+				<br />
+				<strong>Countries: </strong>
+				<p id="modal-country">{{ movie.countries }}</p>
+				<br />
+				<strong>Box office: </strong>
+				<p id="modal-box-office">{{ movie.worldwide_gross_income ? movie.worldwide_gross_income : 'Unknown' }}</p>
+				<br /><br />
+				<strong>Plot summary: </strong><br />
+				<p
+					class="plot"
+					id="modal-desc">
+					<ng-container *ngIf="!extended"> {{ movie.description }} </ng-container>
+					<ng-container *ngIf="extended">
+						{{ movie.long_description }}
+					</ng-container>
+				</p>
+				<br />
+				<mat-divider></mat-divider>
+				<mat-icon
+					class="center"
+					(click)="extend()"
+					>{{ extended ? 'remove' : 'add' }}</mat-icon
+				>
+			</div>
+		</div>
+	</div>
+</mat-dialog-content>

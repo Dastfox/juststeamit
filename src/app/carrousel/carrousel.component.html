@@ -1,7 +1,16 @@
-<ul class="program-list">
-	<li
-		class="program-item"
-		*ngFor="let square of squares">
-		<div class="animated-square"></div>
-	</li>
-</ul>
+<div class="section-carousel">
+	<h1>{{ title }}</h1>
+	<ng-image-slider
+		#nav
+		class="ng-carousel"
+		(imageClick)="imageClick($event)"
+		[animationSpeed]="0.4"
+		[imagePopup]="true"
+		[imageSize]="{ height: '340px', space: 20 }"
+		[images]="images"
+		[slideImage]="2"
+		[imagePopup]="false"
+		[showArrow]="true"></ng-image-slider>
+</div>
+
+<!-- <button (click)="dialog.showModal()">Show dialog</button> -->
