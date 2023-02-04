@@ -1,11 +1,8 @@
-import { animate, animateChild, group, query, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { ImageForCarrousel, Movie } from '../api.models';
-import { InfoModalComponent } from '../info-modal/info-modal.component';
-// import { ModalService } from '../info-modal/info-modal.service';
 import { ApiPullService } from '../services/api-pull.service';
 
 @Component({
@@ -18,6 +15,7 @@ import { ApiPullService } from '../services/api-pull.service';
 export class CarrouselComponent implements AfterViewInit {
 	_movies: Movie[] = [];
 	modal: boolean = false;
+	@Output() imageEvent = new EventEmitter<ImageForCarrousel>();
 
 	private _title: string | undefined;
 	@Input()
@@ -46,21 +44,14 @@ export class CarrouselComponent implements AfterViewInit {
 
 	ngAfterViewInit(): void {}
 
-	public imageClick(index: number): void {
-		console.log(this.images[index]);
-		if (this.images[index]) {
-			this.dialog.open(InfoModalComponent, { data: { id: this.images[index].movie_id }, autoFocus: true });
-		}
+	processImageEvent(index: number) {
+		const image = this.images[index];
+		this.imageEvent.emit(image);
 	}
-	openDialog() {
-		const dialogRef = this.dialog.open(InfoModalComponent);
-
-		dialogRef.afterClosed().subscribe((result) => {
-			console.log(`Dialog result: ${result}`);
-		});
-	}
-	openModal(id: string) {}
-	closeModal(id: string) {
-		this.dialog.closeAll();
-	}
+	// public imageClick(index: number): void {
+	// 	console.log(this.images[index]);
+	// 	if (this.images[index]) {
+	// 		this.dialog.open(InfoModalComponent, { data: { id: this.images[index].movie_id }, autoFocus: false });
+	// 	}
+	// }
 }

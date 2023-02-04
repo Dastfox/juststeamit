@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { map, mergeMap, take, tap } from 'rxjs/operators';
 import { ApiResponse, Movie, ImageForCarrousel } from '../api.models';
 import { CarrouselComponent } from '../carrousel/carrousel.component';
 import { HeaderComponent } from '../header/header.component';
+import { InfoModalComponent } from '../info-modal/info-modal.component';
 import { ApiPullService } from '../services/api-pull.service';
 
 const GENRES = [
@@ -43,12 +45,13 @@ export class HomePageComponent {
 	imagesBestByCategory1: ImageForCarrousel[] = [];
 	imagesBestByCategory2: ImageForCarrousel[] = [];
 	imagesBestByCategory3: ImageForCarrousel[] = [];
+	bestMovie: ImageForCarrousel = {} as ImageForCarrousel;
 	titleCat1: string = '';
 	titleCat2: string = '';
 	titleCat3: string = '';
 	genres: string[] = [];
 
-	constructor(private apiPullService: ApiPullService) {
+	constructor(private apiPullService: ApiPullService, public dialog: MatDialog) {
 		const genres = this._getGenres();
 		this.titleCat1 = this._capitalizeFirstLetter(genres[0]);
 		this.titleCat2 = this._capitalizeFirstLetter(genres[1]);
@@ -74,6 +77,31 @@ export class HomePageComponent {
 				}),
 				tap((images) => {
 					this.imagesBest = images.sort((a, b) => a.score - b.score);
+				})
+			)
+			.subscribe();
+
+		// load best film
+		this.apiPullService
+			.loadBestFilms()
+			.pipe(
+				map((apiResponse) => apiResponse.slice(0, 1)),
+				map((movies) => {
+					return movies.reduce((images: ImageForCarrousel[], movie, idx) => {
+						const image: ImageForCarrousel = {
+							order: idx + 1,
+							alt: movie.title,
+							image: movie.image_url,
+							thumbImage: movie.image_url,
+							movie_id: movie.id,
+							score: parseFloat(movie.imdb_score),
+						};
+						return [...images, image];
+					}, []);
+				}),
+				tap((images) => {
+					console.log(images);
+					this.bestMovie = images[0];
 				})
 			)
 			.subscribe();
@@ -158,13 +186,20 @@ export class HomePageComponent {
 		if (result.length < 3) {
 			let unusedGenres;
 			while (result.length < 3) {
-				unusedGenres = GENRES.filter((genre) => !result.includes(genre) || !this.genres.includes(genre));
+				unusedGenres = GENRES.filter((genre) => !result.includes(genre) && !this.genres.includes(genre));
 				const randomIndex = Math.floor(Math.random() * unusedGenres.length);
 				const genre = unusedGenres[randomIndex];
 				result.push(genre);
 			}
 		}
 		return result;
+	}
+
+	public imageClick(image: ImageForCarrousel): void {
+		console.log(image);
+		if (image) {
+			this.dialog.open(InfoModalComponent, { data: { id: image.movie_id }, autoFocus: false });
+		}
 	}
 
 	private _capitalizeFirstLetter(string: string) {

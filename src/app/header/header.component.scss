@@ -3,10 +3,17 @@ header {
 	color: white;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	padding: 1rem;
-	height: 20%;
+	height: 50%;
 }
-img {
+.header-image {
+	height: 70%;
+	width: auto;
+	transform: translate(-60%, 10%);
+}
+.header-logo {
 	height: 20%;
+	top: 0;
 	width: auto;
 }

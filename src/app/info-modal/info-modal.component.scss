@@ -1,83 +1,8 @@
-/* Modal */
-
-.modal {
-	background-color: rgba(0, 0, 0, 0.8);
-	height: 100%;
-	position: fixed;
-	top: 0;
-	width: 100%;
-}
-
-.modal-content {
-	background-color: #222222;
-	border-radius: 10px;
-	margin: 5% auto;
-	max-width: 1500px;
-	min-height: 350px;
-	padding: 30px 30px 60px 30px;
-	width: 80%;
-}
-
-.modal-cover-image img {
-	border-radius: 10px;
-	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
-	float: right;
-	height: 340px;
-	margin-right: 120px;
-	margin-top: 1%;
-}
-
-.modal-content h3 {
-	display: inline-block;
-	font-size: 32px;
-}
-
-.modal-button {
-	font-size: 14px;
-	margin-left: 30px;
-	width: 80px;
-}
-
-.modal-movie-info {
-	font-size: 25px;
-	margin-left: 30px;
-	margin-right: 40%;
-}
-
-.metadata {
-	font-weight: bold;
-}
-
-.modal-content p {
-	display: inline;
-	line-height: 150%;
-}
-
-.genres,
-strong {
-	color: #b1b1b1;
-}
-
-.plot {
-	font-style: italic;
-}
-
-.close {
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-	cursor: pointer;
-	text-decoration: none;
-}
-
-.center {
+.extend {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	color: aliceblue;
 	font-size: larger;
+	cursor: pointer;
 }

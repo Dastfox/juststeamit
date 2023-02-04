@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header [image]="bestMovie"></app-header>
 <div class="carousels">
 	<div
 		*ngIf="isLoading"
@@ -8,7 +8,8 @@
 		<app-carrousel
 			#bestMovies
 			[title]="'Best Movies'"
-			[images]="imagesBest"></app-carrousel>
+			[images]="imagesBest"
+			(imageEvent)="imageClick($event)"></app-carrousel>
 		<br />
 		<br />
 	</div>
@@ -20,7 +21,8 @@
 		<app-carrousel
 			#Cat1
 			[title]="titleCat1"
-			[images]="imagesBestByCategory1"></app-carrousel>
+			[images]="imagesBestByCategory1"
+			(imageEvent)="imageClick($event)"></app-carrousel>
 		<br />
 		<br />
 	</div>
@@ -32,7 +34,8 @@
 		<app-carrousel
 			#Cat2
 			[title]="titleCat2"
-			[images]="imagesBestByCategory2"></app-carrousel>
+			[images]="imagesBestByCategory2"
+			(imageEvent)="imageClick($event)"></app-carrousel>
 		<br />
 		<br />
 	</div>
@@ -44,7 +47,8 @@
 		<app-carrousel
 			#Cat3
 			[title]="titleCat3"
-			[images]="imagesBestByCategory3"></app-carrousel>
+			[images]="imagesBestByCategory3"
+			(imageEvent)="imageClick($event)"></app-carrousel>
 		<br />
 		<br />
 	</div>

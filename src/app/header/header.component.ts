@@ -10,7 +10,7 @@ import { ImageForCarrousel } from '../api.models';
 export class HeaderComponent implements OnInit {
 	constructor() {}
 
-	@Input() images: ImageForCarrousel[] = [];
+	@Input() image: ImageForCarrousel = {} as ImageForCarrousel;
 
 	ngOnInit(): void {}
 }

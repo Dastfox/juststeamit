@@ -1,10 +1,10 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 // import { ModalService } from './info-modal.service';
 import { CommonModule } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { Movie } from '../api.models';
+import { ImageForCarrousel, Movie } from '../api.models';
 import { ApiPullService } from '../services/api-pull.service';
 
 @Component({
@@ -26,8 +26,10 @@ export class InfoModalComponent {
 	) {
 		this._apiPullService.getMovieById(data.id).subscribe((data) => {
 			this.movie = data;
+			console.log(this.movie);
 		});
 	}
+
 	extend() {
 		this.extended = !this.extended;
 	}

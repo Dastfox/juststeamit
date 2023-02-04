@@ -3,7 +3,7 @@
 	<ng-image-slider
 		#nav
 		class="ng-carousel"
-		(imageClick)="imageClick($event)"
+		(imageClick)="processImageEvent($event)"
 		[animationSpeed]="0.4"
 		[imagePopup]="true"
 		[imageSize]="{ height: '340px', space: 20 }"
