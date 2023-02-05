@@ -1,6 +1,4 @@
-<mat-dialog-content
-	class="modal"
-	id="modal">
+<mat-dialog-content class="modal">
 	<div class="modal-content">
 		<mat-icon
 			mat-dialog-close
@@ -12,9 +10,8 @@
 		<br />
 		<div class="modal-cover-image">
 			<img
-				alt="movie cover"
-				id="modal-cover"
-				src="{{ movie.image_url }}" />
+				[src]="movie.image_url"
+				(error)="setDefaultImage($event)" />
 		</div>
 		<div class="modal-movie-info">
 			<header class="modal_header">

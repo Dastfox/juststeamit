@@ -26,11 +26,13 @@ export class InfoModalComponent {
 	) {
 		this._apiPullService.getMovieById(data.id).subscribe((data) => {
 			this.movie = data;
-			console.log(this.movie);
 		});
 	}
 
 	extend() {
 		this.extended = !this.extended;
+	}
+	setDefaultImage(event: any) {
+		event.target.src = 'assets/logocard.png';
 	}
 }

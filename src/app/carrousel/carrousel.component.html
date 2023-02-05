@@ -1,7 +1,6 @@
 <div class="section-carousel">
 	<h1>{{ title }}</h1>
 	<ng-image-slider
-		#nav
 		class="ng-carousel"
 		(imageClick)="processImageEvent($event)"
 		[animationSpeed]="0.4"
@@ -9,8 +8,7 @@
 		[imageSize]="{ height: '340px', space: 20 }"
 		[images]="images"
 		[slideImage]="2"
+		[title]="true"
 		[imagePopup]="false"
 		[showArrow]="true"></ng-image-slider>
 </div>
-
-<!-- <button (click)="dialog.showModal()">Show dialog</button> -->

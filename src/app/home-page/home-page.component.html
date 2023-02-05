@@ -1,55 +1,59 @@
-<app-header [image]="bestMovie"></app-header>
-<div class="carousels">
-	<div
-		*ngIf="isLoading"
-		class="carrousel">
-		<br />
-		<br />
-		<app-carrousel
-			#bestMovies
-			[title]="'Best Movies'"
-			[images]="imagesBest"
-			(imageEvent)="imageClick($event)"></app-carrousel>
-		<br />
-		<br />
-	</div>
-	<div
-		*ngIf="isLoading"
-		class="carrousel">
-		<br />
-		<br />
-		<app-carrousel
-			#Cat1
-			[title]="titleCat1"
-			[images]="imagesBestByCategory1"
-			(imageEvent)="imageClick($event)"></app-carrousel>
-		<br />
-		<br />
-	</div>
-	<div
-		*ngIf="isLoading"
-		class="carrousel">
-		<br />
-		<br />
-		<app-carrousel
-			#Cat2
-			[title]="titleCat2"
-			[images]="imagesBestByCategory2"
-			(imageEvent)="imageClick($event)"></app-carrousel>
-		<br />
-		<br />
-	</div>
-	<div
-		*ngIf="isLoading"
-		class="carrousel">
-		<br />
-		<br />
-		<app-carrousel
-			#Cat3
-			[title]="titleCat3"
-			[images]="imagesBestByCategory3"
-			(imageEvent)="imageClick($event)"></app-carrousel>
-		<br />
-		<br />
+<div class="container">
+	<app-header
+		[image]="bestMovie"
+		(imageEvent)="imageClick($event)"></app-header>
+	<div class="carousels">
+		<div
+			*ngIf="isLoading"
+			class="carrousel">
+			<br />
+			<br />
+			<app-carrousel
+				#bestMovies
+				[title]="'Best Movies'"
+				[images]="imagesBest"
+				(imageEvent)="imageClick($event)"></app-carrousel>
+			<br />
+			<br />
+		</div>
+		<div
+			*ngIf="isLoading"
+			class="carrousel">
+			<br />
+			<br />
+			<app-carrousel
+				#Cat1
+				[title]="titleCat1"
+				[images]="imagesBestByCategory1"
+				(imageEvent)="imageClick($event)"></app-carrousel>
+			<br />
+			<br />
+		</div>
+		<div
+			*ngIf="isLoading"
+			class="carrousel">
+			<br />
+			<br />
+			<app-carrousel
+				#Cat2
+				[title]="titleCat2"
+				[images]="imagesBestByCategory2"
+				(imageEvent)="imageClick($event)"></app-carrousel>
+			<br />
+			<br />
+		</div>
+		<div
+			*ngIf="isLoading"
+			class="carrousel">
+			<br />
+			<br />
+			<app-carrousel
+				#Cat3
+				[title]="titleCat3"
+				[images]="imagesBestByCategory3"
+				(imageEvent)="imageClick($event)"></app-carrousel>
+			<br />
+			<br />
+		</div>
 	</div>
 </div>

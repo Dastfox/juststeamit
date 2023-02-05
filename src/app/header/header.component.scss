@@ -6,14 +6,38 @@ header {
 	align-items: center;
 	padding: 1rem;
 	height: 50%;
+
+	background: linear-gradient(to top, #333, #000);
 }
+.header-text {
+	font-size: 2vw;
+	margin-right: 20px;
+	margin-left: auto;
+	justify-content: center;
+	align-items: end;
+}
+.header-button {
+	font-size: 0.7em;
+	display: flex;
+	&:hover {
+		background-color: #612323;
+		color: aliceblue;
+	}
+}
+
 .header-image {
-	height: 70%;
-	width: auto;
-	transform: translate(-60%, 10%);
+	height: auto;
+	width: 15vw;
+	margin-right: 25vw;
+	inset: 0;
+	border-radius: 10px;
+	cursor: pointer !important;
+	box-shadow: 20px 10px 15px rgb(0, 0, 0) !important;
 }
 .header-logo {
-	height: 20%;
+	position: absolute;
+	height: 10%;
 	top: 0;
 	width: auto;
+	margin-top: 0;
 }

@@ -66,7 +66,7 @@ export class HomePageComponent {
 					return movies.reduce((images: ImageForCarrousel[], movie, idx) => {
 						const image: ImageForCarrousel = {
 							order: idx + 1,
-							alt: movie.title,
+							alt: '',
 							image: movie.image_url,
 							thumbImage: movie.image_url,
 							movie_id: movie.id,
@@ -90,7 +90,7 @@ export class HomePageComponent {
 					return movies.reduce((images: ImageForCarrousel[], movie, idx) => {
 						const image: ImageForCarrousel = {
 							order: idx + 1,
-							alt: movie.title,
+							alt: '',
 							image: movie.image_url,
 							thumbImage: movie.image_url,
 							movie_id: movie.id,
@@ -115,7 +115,7 @@ export class HomePageComponent {
 					return movies.reduce((images: ImageForCarrousel[], movie, idx) => {
 						const image: ImageForCarrousel = {
 							order: idx + 1,
-							alt: movie.title,
+							alt: '',
 							image: movie.image_url,
 							thumbImage: movie.image_url,
 							movie_id: movie.id,
@@ -139,7 +139,7 @@ export class HomePageComponent {
 					return movies.reduce((images: ImageForCarrousel[], movie, idx) => {
 						const image: ImageForCarrousel = {
 							order: idx + 1,
-							alt: movie.title,
+							alt: '',
 							image: movie.image_url,
 							thumbImage: movie.image_url,
 							movie_id: movie.id,
@@ -163,7 +163,7 @@ export class HomePageComponent {
 					return movies.reduce((images: ImageForCarrousel[], movie, idx) => {
 						const image: ImageForCarrousel = {
 							order: idx + 1,
-							alt: movie.title,
+							alt: '',
 							image: movie.image_url,
 							thumbImage: movie.image_url,
 							movie_id: movie.id,
