@@ -36,6 +36,17 @@ export class ApiPullService {
 			})
 		);
 	}
+	loadBestFilm(pages: number = 2): Observable<Movie> {
+		const p = PARAMETERS;
+		let Observable: Observable<ApiResponse> = this.httpClient.get<ApiResponse>(
+			p.main + '?' + p.pageSelector + +'1' + '&' + p.sortBy.score
+		);
+		return Observable.pipe(
+			map((apiResponse) => {
+				return apiResponse.results[0];
+			})
+		);
+	}
 
 	getMovieById(id: string): Observable<Movie> {
 		return this.httpClient.get<Movie>(PARAMETERS.main + id);

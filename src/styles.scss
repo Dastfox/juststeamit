@@ -4,6 +4,9 @@ body {
 	// height: 100%;
 	width: 100%;
 	right: 0 !important;
+	color: aliceblue;
+	font-size: larger;
+	font-family: 'Helvetica Neue', sans-serif;
 	// transform: translate(-10px) !important;
 }
 
@@ -31,9 +34,9 @@ h1 {
 .ng-image-slider .ng-image-slider-container .main .prev {
 	opacity: 0.5 !important;
 	border-radius: 0 !important;
-	width: 3% !important;
-	height: 110% !important;
-	top: 0 !important;
+	width: 25px !important;
+	height: 89% !important;
+	top: 35px !important;
 	background-color: rgb(65, 65, 65) !important;
 	display: flex !important;
 	justify-content: center !important;
@@ -42,11 +45,20 @@ h1 {
 	font-size: 0 !important;
 	// color: black !important;
 }
+
+.ng-image-slider .ng-image-slider-container .main .next.disable,
+.ng-image-slider .ng-image-slider-container .main .prev.disable {
+	opacity: 0.2 !important;
+	width: 0 !important;
+}
+
 .ng-image-slider .ng-image-slider-container .main .next:hover,
 .ng-image-slider .ng-image-slider-container .main .prev:hover {
 	opacity: 1 !important;
 	background-color: rgb(43, 43, 43) !important;
 	font-size: 60px !important;
+	transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+	transition-timing-function: ease-in-out;
 }
 
 .ng-image-slider .ng-image-slider-container .main .prev {
@@ -66,6 +78,7 @@ body {
 /* Modal */
 .mat-mdc-dialog-container {
 	.modal {
+		box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4) !important;
 		border-radius: 10px;
 		position: fixed;
 		left: 20%;
@@ -76,7 +89,7 @@ body {
 }
 
 .modal-content {
-	background-color: #222222;
+	background-color: #222222 !important;
 	// margin: 5vw auto;
 	max-width: 1500px;
 	min-height: 350px;
@@ -89,9 +102,9 @@ body {
 	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
 	float: right;
 	height: 40vh;
-	margin-right: 5%;
+	margin-right: 0%;
 	margin-top: 5%;
-	margin-left: 5%;
+	margin-left: 10%;
 }
 
 .modal-content h3 {
@@ -154,4 +167,45 @@ strong {
 	font-size: 2.5rem;
 	font-weight: 600;
 	color: #662e2e;
+}
+
+.options {
+	font-size: 0.8rem;
+	color: #ffffff;
+	font-family: 'Helvetica Neue', sans-serif;
+	background: transparent;
+}
+.mat-mdc-select-panel {
+	border-radius: 0, 40px, 40px, 40px !important;
+	border-left-style: none !important;
+	background-color: #161616 !important;
+	color: #ffffff !important;
+}
+
+.mdc-text-field--no-label {
+	height: 40px !important;
+	width: 125px !important;
+	border-radius: 20px !important;
+	background-color: #161616 !important;
+	opacity: 0.7;
+}
+
+.mat-mdc-select-min-line {
+	height: 40px !important;
+	color: #ffffff;
+	position: absolute;
+	top: -0%;
+	left: 0;
+	transform: translate(0%, -60%) !important;
+}
+
+.mat-mdc-select-arrow-wrapper {
+	color: #ffffff;
+	position: absolute;
+	right: 5px;
+	transform: translate(-40%, -50%) !important;
+}
+
+.mdc-list-item__primary-text {
+	color: #ffffff !important;
 }

@@ -1,5 +1,30 @@
 <div class="section-carousel">
-	<h1>{{ title }}</h1>
+	<h1>
+		{{ category ? category : 'Films' }}
+		<mat-icon
+			*ngIf="options && options.length > 0"
+			class="loupe"
+			(click)="switchSearch()"
+			>search</mat-icon
+		>
+		<ng-container
+			*ngIf="options && options.length > 0 && searchBool === true"
+			class="options">
+			<mat-form-field class="options">
+				<mat-select
+					class="options"
+					[(ngModel)]="category"
+					[placeholder]="category ? category : ''">
+					<mat-option
+						class="options"
+						*ngFor="let option of options"
+						[value]="option">
+						{{ option }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</ng-container>
+	</h1>
 	<ng-image-slider
 		class="ng-carousel"
 		(imageClick)="processImageEvent($event)"
