@@ -16,16 +16,20 @@ h1 {
 	color: rgba(255, 255, 255, 0.349);
 }
 
-.ng-image-slider .ng-image-slider-container .main .main-inner .img-div img {
-	background: url(assets/logoWhite.png) no-repeat center center;
-	position: absolute;
-	margin: auto;
-	width: 100% !important;
-	height: auto !important;
-	inset: 0;
-	border-radius: 10px;
-	cursor: pointer !important;
-	box-shadow: 20px 10px 15px rgb(0, 0, 0) !important;
+.ng-image-slider .ng-image-slider-container .main .main-inner .img-div {
+	height: 89% !important;
+	transform: translate(0, 6%);
+	img {
+		background: url(assets/logoWhite.png) no-repeat center center;
+		position: absolute;
+		margin: auto;
+		width: 100% !important;
+		height: auto !important;
+		inset: 0;
+		border-radius: 10px;
+		cursor: pointer !important;
+		box-shadow: 20px 10px 15px rgb(0, 0, 0) !important;
+	}
 }
 .ng-image-slider .ng-image-slider-container .main .main-inner .img-div img:hover {
 	opacity: 0.7;
