@@ -1,0 +1,60 @@
+<div class="container">
+	<app-header (imageEvent)="imageClick($event)"></app-header>
+	<div class="carousels">
+		<ng-container *ngFor="let genre of genres">
+			<div
+				*ngIf="isLoading"
+				class="carrousel">
+				<br />
+				<br />
+				<app-carrousel
+					#bestMovies
+					[category]="genre"
+					(imageEvent)="imageClick($event)"
+					[options]="genre != 'Best Movies' ? allGenres : undefined"></app-carrousel>
+				<br />
+				<br />
+			</div>
+		</ng-container>
+		<!-- </div>
+		<div
+			*ngIf="isLoading"
+			class="carrousel">
+			<br />
+			<br />
+			<app-carrousel
+				#Cat1
+				(imageEvent)="imageClick($event)"
+				[category]="titleCat1"
+				[options]="allGenres"></app-carrousel>
+			<br />
+			<br />
+		</div>
+		<div
+			*ngIf="isLoading"
+			class="carrousel">
+			<br />
+			<br />
+			<app-carrousel
+				#Cat1
+				(imageEvent)="imageClick($event)"
+				[category]="titleCat2"
+				[options]="allGenres"></app-carrousel>
+			<br />
+			<br />
+		</div>
+		<div
+			*ngIf="isLoading"
+			class="carrousel">
+			<br />
+			<br />
+			<app-carrousel
+				#Cat1
+				(imageEvent)="imageClick($event)"
+				[category]="titleCat3"
+				[options]="allGenres"></app-carrousel>
+			<br />
+			<br />
+		</div> -->
+	</div>
+</div>

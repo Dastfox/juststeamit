@@ -1,0 +1,77 @@
+<mat-dialog-content class="modal">
+	<div class="modal-content">
+		<mat-icon
+			mat-dialog-close
+			aria-label="close modal"
+			class="close"
+			>close</mat-icon
+		>
+		<br />
+		<br />
+		<div class="modal-cover-image">
+			<img
+				[src]="movie.image_url"
+				(error)="setDefaultImage($event)" />
+		</div>
+		<div class="modal-movie-info">
+			<header class="modal_header">
+				<h3
+					class="title"
+					id="modal-title">
+					{{ movie.title }}
+				</h3>
+				<div class="metadata">
+					<p>Date: {{ movie.date_published }}</p>
+					<br />
+					<p>Score: {{ movie.imdb_score }}/10</p>
+					<br />
+					<p>Duration :{{ movie.duration }}mn</p>
+					<br />
+					<p
+						class="genres"
+						id="modal-genres">
+						Genre: {{ movie.genres }}
+					</p>
+					<br /><br />
+				</div>
+			</header>
+
+			<div>
+				<strong>Directed by: </strong>
+				<p class="content">{{ movie.directors }}</p>
+				<br />
+				<strong>Starring: </strong>
+				<p class="content">{{ movie.actors }}</p>
+				<br />
+				<strong>Countries: </strong>
+				<p class="content">{{ movie.countries }}</p>
+				<br />
+				<strong>Box office: </strong>
+				<p class="content">{{ movie.worldwide_gross_income ? movie.worldwide_gross_income : 'Unknown' }}</p>
+				<br />
+				<strong>Plot summary: </strong>
+				<br />
+				<p
+					class="plot"
+					id="modal-desc">
+					<ng-container *ngIf="!extended"> {{ movie.description }} </ng-container>
+					<ng-container *ngIf="extended">
+						{{ movie.long_description }}
+					</ng-container>
+				</p>
+				<br />
+				<ng-container
+					*ngIf="
+						movie.long_description && movie.description && movie.long_description.length > movie.description.length
+					">
+					<mat-divider></mat-divider>
+					<mat-icon
+						class="extend"
+						(click)="extend()"
+						>{{ extended ? 'remove' : 'add' }}</mat-icon
+					></ng-container
+				>
+			</div>
+		</div>
+	</div>
+</mat-dialog-content>
