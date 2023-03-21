@@ -24,15 +24,38 @@ button {
 	margin-right: 70px;
 	width: 200px;
 	margin-left: 5px;
+	color: #111111;
 }
 
 .movieContainer img {
 	border-radius: 10px;
-	width: 240px;
-	height: 340px;
+	width: 240px !important;
+	height: 340px !important;
+}
+
+.movieContainer img::after {
 	background-image: url('assets/logocard.png');
 	background-position: center;
 	background-size: cover;
+	content: attr(alt);
+	display: block;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 240px !important;
+	height: 340px !important;
+	/* background: rgba(0, 0, 0, 0.8); */
+	color: #0a0a0a;
+	font-size: 14px;
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 10px;
+	outline: 2px solid #000000;
+	transform: translateY(-20px);
+}
+
+.movieContainer img:not([alt])::after {
+	content: 'Image not available';
 }
 
 .movieContainer:hover img {

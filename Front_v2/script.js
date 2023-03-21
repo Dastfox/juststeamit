@@ -1,10 +1,27 @@
-const mainUrl = 'http://localhost:8000/api/v1/titles/';
+const MAIN_URL = 'http://localhost:8000/api/v1/titles/';
 
 ///////////////////////////////
 //                           //
 //  Server logic functions   //
 //                           //
 ///////////////////////////////
+
+/**
+ * Fetches the best movie from the API and displays it on the home page
+ */
+function fetchBestMovie() {
+	let bestTitle = document.getElementById('top-title');
+	let bestImg = document.getElementsByClassName('best-cover')[0].getElementsByTagName('img')[0];
+	let bestButton = document.getElementsByClassName('button')[0];
+
+	fetch(MAIN_URL + '?sort_by=-imdb_score')
+		.then((response) => response.json())
+		.then((data) => {
+			bestTitle.innerHTML = data['results'][0]['title'];
+			bestImg.src = data['results'][0]['image_url'];
+			bestButton.setAttribute('onclick', `openModal("${data['results'][0]['id']}")`);
+		});
+}
 
 /**
  *  Fetches the movies from the API and displays them on the home page
@@ -25,29 +42,12 @@ function openModal(id) {
 }
 
 /**
- * Fetches the best movie from the API and displays it on the home page
- */
-function fetchBestMovie() {
-	let bestTitle = document.getElementById('top-title');
-	let bestImg = document.getElementsByClassName('best-cover')[0].getElementsByTagName('img')[0];
-	let bestButton = document.getElementsByClassName('button')[0];
-
-	fetch(mainUrl + '?sort_by=-imdb_score')
-		.then((response) => response.json())
-		.then((data) => {
-			bestTitle.innerHTML = data['results'][0]['title'];
-			bestImg.src = data['results'][0]['image_url'];
-			bestButton.setAttribute('onclick', `openModal("${data['results'][0]['id']}")`);
-		});
-}
-
-/**
  *  Fetches the data of the movie to be displayed in the modal
  * @param {*} id  - id of the movie to be displayed
  */
 async function fetchModalData(id) {
 	try {
-		const response = await fetch(mainUrl + id);
+		const response = await fetch(MAIN_URL + id);
 		const data = await response.json();
 		let modalBoxOffice = document.getElementById('modal-box-office');
 		if (data['worldwide_gross_income'] == null) {
@@ -78,13 +78,13 @@ async function fetchModalData(id) {
 
 /**
  *  Fetches the movies from the API and displays them on the home page
- * @param {*} name
+ * @param {*} category
  * @param {*} skip
  * @param {*} total
  * @returns
  */
-async function fetchCategories(name, skip, total = 7) {
-	const results = await fetch(mainUrl + '?sort_by=-imdb_score&genre=' + name);
+async function fetchCategories(category, skip, total = 7) {
+	const results = await fetch(MAIN_URL + '?sort_by=-imdb_score&genre=' + category);
 
 	if (!results.ok) return;
 	const data = await results.json();
@@ -143,6 +143,7 @@ async function buildCarousel(category, skip = 0) {
 	// create DOM elements
 	const section = document.createElement('section');
 	section.classList.add('categories');
+
 	const carousel = document.createElement('div');
 	carousel.classList.add('container');
 	const categoryTitle = document.createElement('h2');
@@ -215,9 +216,10 @@ window.addEventListener('load', async () => {
 		}
 	}
 	await buildCarousel('Best-movies', 1);
-	buildCarousel(GENRES[0]);
-	buildCarousel(GENRES[1]);
-	buildCarousel(GENRES[2]);
+	// buildCarousel(randomGenres[0]);
+	buildCarousel('Western');
+	buildCarousel(randomGenres[1]);
+	buildCarousel(randomGenres[2]);
 
 	fetchBestMovie();
 });
