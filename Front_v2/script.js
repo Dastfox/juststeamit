@@ -216,8 +216,8 @@ window.addEventListener('load', async () => {
 		}
 	}
 	await buildCarousel('Best-movies', 1);
-	// buildCarousel(randomGenres[0]);
-	buildCarousel('Western');
+	buildCarousel(randomGenres[0]);
+	// buildCarousel('Western');
 	buildCarousel(randomGenres[1]);
 	buildCarousel(randomGenres[2]);
 
